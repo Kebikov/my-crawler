@@ -26,6 +26,9 @@ async function run() {
     // const html = await page.content();
     // console.log(html);
 
+    //* Дождаться появления селектора, в данном случае ждем body
+    await page.waitForSelector("body", { visible: true });
+
     //* Получение ссылок
     const links = await page.evaluate(() => {
         return Array.from(document.querySelectorAll('a'), (e) => e.href);

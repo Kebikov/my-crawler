@@ -1,21 +1,26 @@
-const puppeteer = require('puppeteer');
+const { minify } = require('html-minifier-terser');
 
 /**
  * Получение только нужного html на сайте, без кода изображений в base64.
+ *  @param {Object} page Обьект страницы.
  * @param {string} url Адресс страницы для получения html.
  * @returns {string} Код html без base64.
  */
-const  getCleanHtml = async (url) => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+const  getCleanHtml = async (page, url) => {
+
     await page.goto(url);
 
     const html = await page.content();
     const base64 = html.replace(/(<img src="data:image\/png;base64)(.*?)(>)/gi, '');
 
-    await browser.close();
+    const result = await minify(base64, {
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true
+    });
 
-    return base64;
+    return result;
 }
 
 module.exports = getCleanHtml;
