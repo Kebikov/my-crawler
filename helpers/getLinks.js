@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
  * @return {string[] | null}
  */
 async function getLinks(page, sitePage, startPage) {
-    console.log(sitePage);
+    
     await page.goto(sitePage);
     await page.waitForSelector("body", { visible: true });
 

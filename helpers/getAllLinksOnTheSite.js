@@ -36,6 +36,7 @@ const getAllLinksOnTheSite = async (page, pageMainOfTheSite) => {
                 if(timeArrayLinks.includes(gotLink) || mainArrayLinks.includes(gotLink)) {
                     continue;
                 } else {
+                    console.log(chalk.bgCyan('Got link : ', gotLink));
                     timeArrayLinks.push(gotLink);
                 }
             }

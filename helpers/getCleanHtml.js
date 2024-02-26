@@ -9,9 +9,10 @@ const { minify } = require('html-minifier-terser');
 const  getCleanHtml = async (page, url) => {
 
     await page.goto(url);
+    await page.waitForSelector("body", { visible: true });
 
     const html = await page.content();
-    const base64 = html.replace(/(<img src="data:image\/png;base64)(.*?)(>)/gi, '');
+    const base64 = html.replace(/<[^<]*?base64.*?>/gi, '');
 
     const result = await minify(base64, {
         collapseWhitespace: true,
