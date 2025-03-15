@@ -17,12 +17,13 @@ async function run() {
     const page = await browser.newPage();
 
     const allLinksOnTheSite = await getAllLinksOnTheSite(page, siteStartPage);
+    console.log(allLinksOnTheSite);
     console.log(chalk.blue('✅ ', 'Links goted !'));
-    const result = await writingCode(page, allLinksOnTheSite, siteStartPage);
+    //const result = await writingCode(page, allLinksOnTheSite, siteStartPage);
 
     
     await browser.close();
-    console.log(chalk.bgGreen('✅ FINISH ALL ', result));
+    //console.log(chalk.bgGreen('✅ FINISH ALL ', result));
 }
 
 run();
