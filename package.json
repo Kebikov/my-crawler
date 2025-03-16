@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "dev": "ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +12,9 @@
     "chalk": "^4.1.2",
     "html-minifier-terser": "^7.2.0",
     "puppeteer": "^22.2.0"
+  },
+  "devDependencies": {
+    "@types/html-minifier-terser": "^7.0.2",
+    "typescript": "^5.8.2"
   }
 }
